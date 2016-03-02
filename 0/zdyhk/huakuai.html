@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#con{
+			overflow: hidden;
+			width: 660px;height: 600px;
+			border: 1px solid black;
+		}
+		#columnWrap{
+			float: right;
+			width: 15px;height: 600px;
+			background-color: #ccc;
+		}
+		#upBtn{
+			width: 15px;height: 20px;
+			background-color: green;
+			cursor: pointer;
+		}
+		#column{
+			position: relative;
+			width: 15px;height: 560px;
+		}	
+		#slider{
+			position: absolute;
+			width: 15px;
+			background-color: blue;
+			cursor: pointer;
+		}
+		#downBtn{
+			width: 15px;height: 20px;
+			background-color: green;
+			cursor: pointer;
+		}
+		#text{
+			overflow: hidden;
+			height: 600px;
+		}
+	</style>
+</head>
+<body>
+	<div id="con">
+		<div id="columnWrap">
+			<div id="upBtn">上</div>
+			<div id="column">			
+				<div id="slider"></div>			
+			</div>
+			<div id="downBtn">下</div>
+		</div>
+		<div id="text">
+			<div id='textCon'>
+				【开始开始开始】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【唵嘛呢叭咪吽】【结束结束结束】
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var oCon = document.getElementById('con');
+		var oText = document.getElementById('text');
+		var oColumn = document.getElementById('column');
+		var oUpBtn = document.getElementById('upBtn');
+		var oSlider = document.getElementById('slider');
+		var oDownBtn = document.getElementById('downBtn');
+		var oTextCon = document.getElementById('textCon');
+		var sliderTop = 0;
+
+		oSlider.style.height=oText.offsetHeight/oTextCon.clientHeight*oColumn.clientHeight + "px";
+
+		oSlider.onmousedown = function(ev) {
+			var oEvent = ev || event;
+			var t = oEvent.clientY - oSlider.offsetTop;
+			document.onmousemove = function(ev) {
+				var oEvent = ev || event;
+				sliderTop = oEvent.clientY - t;
+				setTop();
+			}
+			document.onmouseup = function() {
+				document.onmousemove = null;
+			}
+			return false;
+		}
+
+		oColumn.onclick = function(ev) {
+			var oEvent = ev || event;
+			if (oEvent.clientY < getPos(oSlider).top || oEvent.clientY > getPos(oSlider).top + oSlider.offsetHeight) {
+				sliderTop = oEvent.clientY-oSlider.offsetHeight;
+				setTop();
+			}
+		}
+
+		function setTop() {
+			if (sliderTop < 0) {
+				sliderTop = 0;
+				sliderTop=0;
+			}
+			if (sliderTop > oColumn.clientHeight - oSlider.offsetHeight) {
+				sliderTop = oColumn.clientHeight - oSlider.offsetHeight;
+			}
+			oSlider.style.top = sliderTop + 'px';
+			var scale = sliderTop / (oColumn.clientHeight - oSlider.offsetHeight);
+			oText.scrollTop = (oTextCon.clientHeight - oText.offsetHeight) * scale;
+		}
+
+		oUpBtn.onmousedown = function() {
+			sliderTop -= 40;
+			setTop(sliderTop);
+			return false;
+		}
+
+		oDownBtn.onmousedown = function() {
+			sliderTop += 40;
+			setTop(sliderTop);
+			return false;
+		}
+
+		document.onkeydown=function (ev){		
+			var oEvent=ev||event;
+			if (oEvent.keyCode==38){
+				sliderTop -= 40;
+			}
+			else if(oEvent.keyCode==40){			
+				sliderTop += 40;
+			};
+			setTop();
+		};
+
+		function fnWheel(obj, fnWheel) {
+			if (obj.addEventListener) {
+				obj.addEventListener("DOMMouseScroll", fn, false);
+			};
+			obj.onmousewheel = fn;
+
+			function fn(ev) {
+				var oEvent = ev || event;
+				var down = true;
+				if (oEvent.wheelDelta) {
+					down = oEvent.wheelDelta < 0;
+				} else {
+					down = oEvent.detail > 0;
+				};
+				fnWheel(down);
+				if (oEvent.preventDefault) {
+					oEvent.preventDefault();
+				};
+				return false;
+			};
+		};
+
+		fnWheel(oCon, function(down) {
+			if (down) {
+				sliderTop += 40;
+			} else {
+				sliderTop -= 40;
+			};
+			setTop(sliderTop);
+		});
+
+		function getPos(obj){	
+			var t=0;
+			var l=0;		
+			while(obj){			
+				t+=obj.offsetTop;
+				l+=obj.offsetLeft;
+				obj=obj.offsetParent;
+			};
+			return {top:t,left:l};
+		}
+	</script>
+</body>
+</html>

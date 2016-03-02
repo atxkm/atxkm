@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>大图滚动</title>
+	<script src="tween.js"></script>
+	<style>
+		#out{overflow: hidden;width: 670px;height: 240px;margin: 10px auto;}
+		#in{overflow: hidden;width: 9999px;height: 240px;}
+		#in img{float: left;}
+		.wrap_btn{overflow: hidden;width: 301px;margin: 0 auto;}
+		#this_btn{display: inline-block;}
+	</style>
+	<script>
+		window.onload=function (){
+
+			var oOut=document.getElementById('out');
+			var oIn=document.getElementById('in');
+			var aImg=oIn.getElementsByTagName('img');
+			var oUp=document.getElementById('up');
+			var oDown=document.getElementById('down');
+			var oDiv=document.getElementById('this_btn');
+			var aBtn=oDiv.getElementsByTagName('input');
+
+			var index=0;
+			var timer=null;
+
+			function move(){
+
+				var ind=0;
+				var start=oOut.scrollLeft;;
+				var end=oOut.clientWidth*index;
+				var change=end-start;
+
+				clearInterval(timer);
+				timer=setInterval(function (){
+
+					ind++;
+					if(ind==50){
+
+						clearInterval(timer);
+					}
+					oOut.scrollLeft=Tween.Expo.easeOut(ind,start,change,50);
+				},33);
+			
+
+
+			}
+
+			function run(){
+
+				index++;
+				if(index==aImg.length){
+
+					index=0;
+				}
+				move();
+			}
+
+			oOut.onmouseover=function (){
+
+					clearInterval(timer2);
+					if(oOut.scrollLeft%oOut.clientWidth==0){
+
+						clearInterval(timer);
+					}	
+				}
+				
+				oOut.onmouseout=function (){
+					
+					timer2=setInterval(run,2000);
+				}
+
+				oUp.onclick=function (){
+
+					if(oOut.scrollLeft%oOut.clientWidth<40||oOut.scrollLeft%oOut.clientWidth>630){
+						
+						index--;
+
+						if(index<0){
+
+							index=aImg.length-1;
+						}
+
+						clearInterval(timer2);
+						move();
+						timer2=setInterval(run,2000);
+					}
+				}
+
+				oDown.onclick=function (){
+
+					if(oOut.scrollLeft%oOut.clientWidth<40||oOut.scrollLeft%oOut.clientWidth>630){
+
+						index++;
+
+						if(index==aImg.length){
+
+							index=0;
+						}
+
+						clearInterval(timer2);
+						move();
+						timer2=setInterval(run,4000);
+					}
+				}
+
+				for(var i=0;i<aBtn.length;i++){
+
+					aBtn[i].index=i;
+					aBtn[i].onclick=function (){
+
+						index=this.index;
+
+						clearInterval(timer2);
+						move();
+						timer2=setInterval(run,4000);
+					}
+				}
+
+			var timer2=setInterval(run,4000);
+		}
+	</script>
+</head>
+<body>
+	<div id="out">
+		<div id="in">
+			<img src="1.jpg" alt="图片" title="1">
+			<img src="2.jpg" alt="图片" title="2">
+			<img src="3.jpg" alt="图片" title="3">
+			<img src="4.jpg" alt="图片" title="4">
+			<img src="5.jpg" alt="图片" title="5">
+		</div>
+	</div>
+	<div class="wrap_btn">
+		<input type="button" value="上一幅" id="up">
+		<div id="this_btn">
+			<input type="button" value="1">
+			<input type="button" value="2">
+			<input type="button" value="3">
+			<input type="button" value="4">
+			<input type="button" value="5">
+		</div>
+		<input type="button" value="下一幅" id="down">
+	</div>
+</body>
+</html>

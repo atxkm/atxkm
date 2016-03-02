@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#diamond{
+			position: absolute;top:40px;
+			width: 100px;height: 100px;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<div id="diamond"></div>
+	<input type="button" value='回放' id='replay'>
+
+	<script>
+		var oDiamond = document.getElementById('diamond');
+		var oReplay = document.getElementById('replay');
+		var coor = [];
+
+		oDiamond.onmousedown = function(ev) {
+			var oEvent = ev || event;
+			var l = oEvent.clientX - oDiamond.offsetLeft;
+			var t = oEvent.clientY - oDiamond.offsetTop;
+
+			document.onmousemove = function(ev) {
+				var oEvent = ev || event;
+				coorL = oEvent.clientX - l;
+				coorT = oEvent.clientY - t;
+				oDiamond.style.left = coorL + 'px';
+				oDiamond.style.top = coorT + 'px';
+				
+				coor.push({
+					left: coorL,
+					top: coorT
+				});
+			}
+
+			oDiamond.onmouseup = function() {
+				document.onmousemove = null;
+			}
+
+			return false;
+		}
+
+		oReplay.onclick=function () {
+			var timer=setInterval(function () {
+				var obj=coor.pop();
+				oDiamond.style.left=obj.left+'px';
+				oDiamond.style.top=obj.top+'px';
+				if(coor.length==0){
+					clearInterval(timer);
+				}
+			},33);
+		}
+//		alert(document.cookie);
+	</script>
+</body>
+</html>

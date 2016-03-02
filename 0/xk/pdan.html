@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+ul{ list-style:none;}
+li{ list-style:none;}
+#div1{width:100%; position:relative; }
+#div2{position:absolute; bottom:0px; width:50px; height:2px; background:red; -webkit-transform:rotate(0deg); -webkit-transform-origin:100% 100%; transform:rotate(9deg)}
+#div3{position:relative;}
+.a1{width:5px; height:5px; background:black; position:absolute;}
+</style>
+
+<script>
+window.onload=function(ev){
+	
+	//var oEvent=ev||event;
+	var oDiv1=document.getElementById("div1");
+	var oDiv2=document.getElementById("div2");
+	var oDiv3=document.getElementById("div3");
+	var a=0; b=0;
+	
+	
+	oDiv1.style.height=document.documentElement.clientHeight+"px";
+	oDiv2.style.left=(document.documentElement.clientWidth-oDiv2.offsetWidth)/2+"px";
+	
+	document.onmousemove=function(ev){
+		
+		var oEvent = ev || event;
+		X=oEvent.clientX-50;
+		var Y=document.documentElement.clientHeight-oEvent.clientY;
+		var N=oDiv2.offsetLeft-X;
+		var Z=(Y*Y)+(N*N)
+		du= (180*Math.asin( Y/Math.sqrt(Z) )/ Math.PI)
+		//alert(du) 
+		a=oDiv2.offsetLeft;
+			
+		b=oDiv2.offsetTop;
+		if(X<oDiv2.offsetLeft){
+			oDiv2.style["-webkit-transform"]="rotate"+"("+du+"deg"+")"
+		}
+		else{
+			oDiv2.style["-webkit-transform"]="rotate"+"("+(180-du)+"deg"+")"
+		}
+ 	}
+	document.onclick=function(ev){
+		
+		var oEvent=ev||event;
+		var oLi=document.createElement("li");
+		oLi.className="a1"
+		oDiv3.appendChild(oLi);	
+		oLi.style.left=oDiv2.offsetLeft;
+		oLi.style.top=oDiv2.offsetTop;
+		var timer=null;
+		//alert(du)
+		if(X<oDiv2.offsetLeft){
+		var aa=a+oDiv2.offsetWidth-oDiv2.offsetWidth*Math.cos(du*Math.PI/180);
+		//alert(aa)
+		var bb=b-parseInt(oDiv2.offsetWidth*Math.sin(du*Math.PI/180));
+		var qq=(aa-oEvent.clientX)/80
+		var ww=(document.documentElement.clientHeight-oEvent.clientY-oDiv2.offsetWidth*Math.sin(du*Math.PI/180))/80
+		timer=setInterval(function(){
+			aa-=qq;
+			bb-=ww;
+			oo=aa;
+			ii=bb
+			if(aa<0||bb<0){oDiv3.removeChild(oLi);
+			 oo=0; ii=0
+			 clearInterval(timer)
+			 }
+			oLi.style.left=aa+"px";
+			oLi.style.top=bb+"px";	
+		
+		},33)
+		}
+		else{
+			var cc=a+oDiv2.offsetWidth+oDiv2.offsetWidth*Math.cos(du*Math.PI/180);
+			//alert(aa)
+			var dd=b-parseInt(oDiv2.offsetWidth*Math.sin(du*Math.PI/180));
+			var ee=(oEvent.clientX-cc)/80;
+			//alert(ee*80)
+			var rr=(document.documentElement.clientHeight-oEvent.clientY-oDiv2.offsetWidth*Math.sin(du*Math.PI/180))/80
+			timer=setInterval(function(){
+				cc+=ee;
+				dd-=rr;
+				pp=cc;
+				uu=dd;
+				if(pp>=document.documentElement.clientWidth || uu<0)
+				{oDiv3.removeChild(oLi);
+				 pp=0;
+				 uu=0;
+				 clearInterval(timer)
+				}
+				oLi.style.left=cc+"px";
+				oLi.style.top=dd+"px";	
+		
+			},33)
+			
+		}
+		
+	}
+		
+}
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<div id="div2"></div>
+    <div id="div3"></div>
+</div>
+</body>
+</html>

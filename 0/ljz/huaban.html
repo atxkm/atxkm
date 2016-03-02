@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>花板</title>
+	<style>
+		*{margin: 0;padding: 0}
+		.wrap{overflow: hidden;width: 1200px;margin: 0 auto;border: 1px solid black;}
+		ul{list-style: none;float: left;width: 300px;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul></ul>
+		<ul></ul>
+		<ul></ul>
+		<ul></ul>
+	</div>
+
+	<script>
+		var aUl = document.getElementsByTagName('ul');
+
+		function creatLi() {
+			for (var j = 0; j < 10; j++) {
+				var oLi = document.createElement('li');
+				oLi.style.height = 200 + parseInt(Math.random() * 300) + "px";
+				oLi.style.backgroundColor = '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
+
+				var oMin = minUlH();
+				for (var i = 0; i < aUl.length; i++) {
+					if (aUl[i].offsetHeight == oMin) {
+						aUl[i].appendChild(oLi);
+						break;
+					};
+				};
+			};
+		}
+
+		function minUlH() {
+			var h = [];
+			for (var i = 0; i < aUl.length; i++) {
+				h.push(aUl[i].offsetHeight);
+			};
+			return Math.min.apply(null, h);
+		}
+
+		function getPos(obj) {
+			var t = 0;
+			var l = 0;
+			while (obj) {
+				t += obj.offsetTop;
+				l += obj.offsetLeft;
+				obj = obj.offsetParent;
+			};
+			return {
+				top: t,
+				left: l
+			};
+		};
+		creatLi();
+
+		window.onload = window.onscroll = function() {
+
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			if (scrollTop >= document.body.offsetHeight - document.documentElement.clientHeight - 300) {
+				creatLi();
+			}
+		}
+	</script>
+</body>
+</html>

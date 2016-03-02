@@ -1,0 +1,76 @@
+ <!doctype html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>天茂</title>
+ 	<style>
+ 		body{height: 4000px;}
+		#nav{position: fixed;float: left;list-style: none;width: 240px;}
+		#nav li{overflow: hidden;height: 78px;}
+		#topBtn{position: fixed;right: 20px;bottom: 198px;width: 60px;height: 60px;background: url(topBtn.jpg) 0 0 no-repeat;cursor: pointer;}
+		#buy{position: fixed;right: 0;bottom: 0;width: 193px;height: 198px;background: url(ad.png) 0 0 no-repeat;}
+ 	</style>
+ 	<script>
+ 		window.onload=function (){
+ 			var oNav=document.getElementById('nav');
+ 			var aLi=oNav.getElementsByTagName('li');
+	 		var oTopBtn=document.getElementById('topBtn');
+
+ 			window.onscroll=function () {
+ 				for (var i = 0; i < aLi.length; i++) {
+ 					aLi[i].style.height=78+'px';					
+ 				};
+ 				var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+ 				var n=parseInt(scrollTop/300);
+ 				if(n>aLi.length){
+ 					n=aLi.length;
+ 				}
+ 				for (var i = 0; i < n; i++) {
+ 					aLi[i].style.height=30+'px';
+ 				};
+ 			}
+
+	 		oTopBtn.onclick=function (){	 			
+	 			document.documentElement.scrollTop=0;
+	 			document.body.scrollTop=0;
+	 		}
+ 		}
+ 	</script>
+ </head>
+ <body>
+ 	<ul id="nav">
+ 		<li>
+ 			<img src="con1.jpg" alt="图片1">
+ 		</li>
+ 		<li>
+ 			<img src="con2.jpg" alt="图片2">
+ 		</li>
+ 		<li>
+ 			<img src="con3.jpg" alt="图片3">			
+ 		</li>
+ 		<li>
+ 			<img src="con4.jpg" alt="图片4">
+ 		</li>
+ 		<li>
+ 			<img src="con5.jpg" alt="图片5">
+ 		</li>
+ 		<li>
+ 			<img src="con6.jpg" alt="图片6">
+ 		</li>
+ 		<li>
+ 			<img src="con1.jpg" alt="图片1">
+ 		</li>
+ 		<li>
+ 			<img src="con2.jpg" alt="图片2">
+ 		</li>
+ 		<li>
+ 			<img src="con3.jpg" alt="图片3">			
+ 		</li>
+ 		<li>
+ 			<img src="con4.jpg" alt="图片4">
+ 		</li>
+ 	</ul>
+ 	<div id="topBtn"></div>
+ 	<div id="buy"></div>
+ </body>
+ </html>

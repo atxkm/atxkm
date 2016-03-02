@@ -1,0 +1,253 @@
+*{
+	list-style: none;
+	margin: 0;padding: 0;
+	color: #333;
+	text-decoration: none;
+}
+body{
+	background: url(img/body.png) 0 0 repeat-x #fff;
+	font: normal 12px/14px Geneva,"宋体",Tahoma,sans-serif;
+}
+input{
+	text-indent: 8px;
+}
+.bg{
+	background: url(img/bg_chs.png) no-repeat center top;
+}
+.container{
+	position: relative;
+	width: 956px;margin: 0 auto;height: 612px;
+}
+.header{
+	height: 94px;
+	background: url(img/bg_chs.png) no-repeat center top;
+}
+.header_a{
+	float: left;
+	height: 90px;width: 290px;
+}
+.header ul{
+	float: right;
+	margin: 40px 2px 0px 0px;
+	font-family: Tahoma,Verdana,Arial,'宋体';
+}
+.header li{
+	float: left;
+	color: #E7E7E7;
+}
+.header li.active{
+	color: #FFF;
+}
+.feedback{
+	clear: right;float: right;
+	margin: 11px 20px 0px 0px;
+	color: #FFF;
+}
+.left{
+	float: left;
+	width: 210px;height: 580px;padding-top: 30px;
+	background: url(img/left.png) 0 0 no-repeat;
+}
+.nav_box_active{
+	display: inline-block;
+	width: 188px;height: 72px;padding: 10px 0 0 22px;
+	background: url(img/left_2.png) 2px -82px no-repeat;
+}
+.nav_box{
+	display: inline-block;
+	width: 168px;height: 72px;padding: 10px 0 0 22px;
+	background: url(img/left_2.png) 2px 0 no-repeat;
+}
+.left .nav_1{
+	display: block;
+	width: 148px;height: 26px;padding-left: 30px;
+	background: url(img/index_icon_1.png) 0 -146px no-repeat;
+	font-size: 20px;font-family: '微软雅黑';line-height: 26px;color: #fff;
+}
+.left .nav_2{
+	display: block;
+	width: 158px;height: 26px;padding-left: 30px;
+	background: url(img/index_icon_1.png) 3px -461px no-repeat;
+	font-size: 20px;font-family: '微软雅黑';line-height: 26px;color: #616c72;
+}
+.left .nav_3{
+	display: block;
+	width: 158px;height: 26px;padding-left: 30px;
+	background: url(img/index_icon_1.png) 0 -8px no-repeat;
+	font-size: 20px;font-family: '微软雅黑';line-height: 26px;color: #616c72;
+}
+.left .dd{
+	display: block;
+	height: 16px;padding-top: 10px;
+	line-height: 16px;color: #fff;
+}
+.left .tt{
+	color: #616c72;
+}
+.accounts_find{
+	width: 179px;height: 185px;margin: 97px 0 0 7px;
+	background: url(img/index_icon_1.png) 0 -250px no-repeat;
+}
+.accounts_find input{
+	width: 140px;height: 24px;margin: 43px 0 0 5px;
+	border: none;background: url() 0 0 no-repeat;
+	line-height: 24px;text-indent: 2px;
+}
+.accounts_find ul{
+	padding-top: 22px;
+	padding-left: 37px;
+}
+.accounts_find li{
+	display: inline-block;
+	width: 48px;height: 28px;text-indent: 18px;
+	line-height: 20px;color: #696969;
+}
+.accounts_find .l1{
+	background: url(img/ipt.png) -267px -70px no-repeat;
+}
+.accounts_find .l2{
+	background: url(img/ipt.png) -267px -97px no-repeat;
+}
+.accounts_find .l3{
+	background: url(img/ipt.png) -267px -125px no-repeat;
+}
+.accounts_find .l4{
+	background: url(img/ipt.png) -267px -152px no-repeat;
+}
+.right{
+	float: left;
+	width: 746px;height: 612px;
+	background: #fff url(img/right.png) right 0 no-repeat;border-top: solid 1px #80add9;border-bottom: solid 1px #d6d9db;
+}
+.phone_quick{
+	float: right;
+	width: 97px;height: 17px;margin: 13px 0px 0px 0px;
+	color: #3F9AD3;
+	cursor: pointer;
+}
+.right_con{
+	clear: both;
+	padding-top: 20px;
+}
+.box_email{
+	display: none;
+}
+.box_phone{
+	display: none;
+}
+.name_hint{
+	float: left;position: relative;top: 10px;left: 12px;display: none;
+	height: 14px;
+	background: url(img/pwd_sprite.png) 0 -352px no-repeat;
+	color: #f66;text-indent: 14px;line-height: 14px;
+}
+.box_psd{
+	position: relative;
+}
+.pass_hint{
+	position: absolute;left: 495px;top: -18px;display: none;
+	width: 158px;height: 77px;padding-top: 10px;
+	background: url(img/pwd_sprite.png) 0 0 no-repeat;
+	color: #f66;text-indent: 33px;
+}
+.pass_hint span{
+	display: block;
+	height: 22px;
+	background: url(img/pwd_sprite.png) 15px -219px no-repeat;
+}
+.right_con .item{
+	float: left;clear: both;
+	width: 179px;height: 50px;padding-right: 10px;
+	text-align: right;font-size: 14px;line-height: 33px; 
+}
+.right_con .box{
+	clear: both;
+}
+.box_email input,.box_phone input,.box_name input,.box_psd input,.box_r_psd input{
+	float: left;
+	width: 300px;height: 35px;
+	background: url(img/ipt.png) 0 0 no-repeat;
+	border: none;
+}
+.box_sex .item,.box_bty .item,.box_city .item{
+	height: 40px;line-height: 20px;
+}
+.box_sex .sex_word{
+	color: #84a8c8;
+}
+.box_sex .sex_word{
+	display: inline-block;
+	width: 56px;height: 20px;
+	background: url(img/ipt.png) -300px -354px no-repeat;
+	text-indent: 20px;line-height: 18px;
+}
+.box_sex .checked{
+	background: url(img/ipt.png) -300px -322px no-repeat;
+}
+.box_bty input{position: relative;
+	float: left;
+	width: 60px;height: 23px;margin-left: 4px;
+	border: none;background: url(img/ipt.png) -197px -176px no-repeat;
+	color: #4099d6;line-height: 23px;text-indent: 5px;
+}
+.box_bty .type{
+	margin-left: 0;padding-right: 20px;
+}
+.box_bty .type_wrap{
+	overflow: hidden;float: left;width: 60px;height: 23px;
+}
+.box_bty .type_word{
+	float: left;position: relative;top:-23px;left: 5px;
+	color: #4099d6;line-height: 23px;
+}
+.box_bty .year{
+	width: 106px;
+	background: url(img/ipt.png) 0 -246px no-repeat;
+}
+.box_city input{
+	float: left;position: relative;left: -4px;
+	width: 97px;height: 23px;margin-left: 4px;
+	border: none;background: url(img/ipt.png) -106px -246px no-repeat;
+	color: #4099d6;line-height: 23px;text-indent: 5px;
+}
+div.box_checkcode{
+	height: 60px;
+}
+.box_checkcode input{
+	float: left;
+	width: 166px;height: 53px;
+	border: none;background: url(img/ipt.png) 0 -70px no-repeat;
+}
+.box_checkcode .code{
+	line-height: 50px;
+}
+.box_checkcode img{
+	float: left;margin-left: 5px;
+}
+.box_checkcode a{
+	position: relative;top: 45px;left: 11px;
+	color: #4199d7;
+}
+.box_qzone,.box_read{
+	height: 18px;margin: 14px 0 0 189px;
+	background: url(img/ipt.png) -300px -292px no-repeat;
+	text-indent: 20px;line-height: 18px;cursor: pointer;
+}
+.box_read{
+	margin-top: 7px;
+}
+.box_read span{
+	display: inline-block;width: 15px;height: 9px;margin-left: 10px;
+	background: url(img/pwd_sprite.png) -35px -320px no-repeat;
+}
+.box_btn{
+	width: 183px;height: 52px;margin: 18px 0 0 189px;
+	background: url(img/ipt.png) 0 -345px no-repeat;
+	font: bold 22px/50px "微软雅黑";color: #fff;text-align: center;
+	cursor: pointer;
+}
+.phone_quick .arrow{
+	float: right;
+	width: 17px;height: 17px;margin-right: 4px;
+	background: url(img/pwd_sprite.png) -40px -318px no-repeat;
+}

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="tween.js"></script>
+	<style>
+		*{margin: 0;padding: 0;}
+		ul{list-style: none;}
+		.wrap{position: relative;}
+		.nav li{position: absolute;width: 60px;text-align: center;color:#666;font-size:14px;font-weight:bold;cursor: pointer;}
+		.slider{position: absolute;top: 15px;width: 60px;height: 5px;border-bottom: 5px solid red;}
+		.slider span{position: absolute;left: 24px;float: left;zoom:1;margin-top: -5px;border-width:6px;border-style: dashed dashed solid dashed;border-color:transparent transparent red transparent;}
+	</style>
+	<script>
+		function byClassName(parent,claNa){
+
+			var aEle=parent.getElementsByTagName('*');
+
+			var arr=[];
+
+			for(var i=0;i<aEle.length;i++){
+
+				if(aEle[i].className==claNa){
+
+					arr.push(aEle[i]);					
+				}
+			}
+
+			return arr;
+		}
+
+		function navMove(index){
+
+			var oNav=byClassName(document,'nav')[index];
+			var aLi=oNav.getElementsByTagName('li');
+			var oDiv=byClassName(document,'slider')[index];	
+			
+			var timer=null;
+			for(var i=0;i<aLi.length;i++){
+
+				aLi[i].style.left=i*aLi[i].offsetWidth+"px";
+
+				aLi[i].onmouseover=function (){
+					
+					var ind=0;
+					var start=oDiv.offsetLeft;
+					var end=this.offsetLeft;
+					var change=end-start;
+					
+					clearInterval(timer);
+					timer=setInterval(function (){
+
+						ind++;
+						if(ind==50){
+
+							clearInterval(timer);
+						}
+						oDiv.style.left=Tween.Expo.easeOut(ind,start,change,50)+"px";
+					},33);
+				}	
+			}
+		}
+
+		window.onload=function (){
+
+			var aWrap=byClassName(document,"wrap");
+	
+			for (var i=0;i<aWrap.length;i++){
+				
+				navMove(i);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav">
+			<li>数码</li>
+			<li>服装</li>
+			<li>食品</li>
+			<li>家电</li>
+			<li>日用</li>
+			<li>数码</li>
+			<li>服装</li>
+			<li>食品</li>
+			<li>家电</li>
+			<li>日用</li>
+		</ul>
+		<div class="slider">
+			<span></span>
+		</div>
+	</div>
+	<div class="wrap" style="top:100px;">
+		<ul class="nav">
+			<li>数码</li>
+			<li>服装</li>
+			<li>食品</li>
+			<li>家电</li>
+			<li>日用</li>
+			<li>数码</li>
+			<li>服装</li>
+		</ul>
+		<div class="slider">
+			<span></span>
+		</div>
+	</div>
+	<div class="wrap" style="top:200px;">
+		<ul class="nav">
+			<li>食品</li>
+			<li>家电</li>
+			<li>日用</li>
+			<li>数码</li>
+			<li>服装</li>
+			<li>食品</li>
+			<li>家电</li>
+			<li>日用</li>
+		</ul>
+		<div class="slider" >
+			<span></span>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品放大效果</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		body{
+			background-color: #ccc;
+		}	
+		#minPic{
+			position: relative;float: left;
+			width: 439px;height: 365px;
+			cursor: none;
+		}
+		#glass{
+			position: absolute;display: none;
+			width: 120px;height: 120px;
+			background-color: #000;
+			opacity: 0.5;
+		}
+		#maxPic{
+			position: absolute;left: 450px;top: 0;
+			overflow: hidden;display: none;
+			width: 600px;height: 600px;
+		}
+		#maxPic img{
+			width: 2195px;height: 1826px;
+		}
+	</style>
+</head>
+<body>	
+	<div id="minPic">
+		<div id="glass"></div>
+		<img src="lenovo-B460(min).jpg" alt="小商品图">
+		<div id="maxPic">
+			<img src="lenovo-B460(max).jpg" alt="大商品图" id="maxImg">
+		</div>
+	</div>	
+	<div style="clear:both">
+		<select id="select">
+			<option value="5">放大5倍</option>
+			<option value="10">放大10倍</option>
+		</select>
+	</div>
+
+	<script>
+		var oMinPic = document.getElementById('minPic');
+		var oGlass = document.getElementById('glass');
+		var oMaxPic = document.getElementById('maxPic');
+		var oMaxImg = document.getElementById('maxImg');
+		var oSelect = document.getElementById('select');
+
+		oSelect.onchange = function() {
+			if (oSelect.value == 10) {
+				oGlass.style.width = '60px';
+				oGlass.style.height = '60px';
+				oMaxImg.style.width = '4390px';
+				oMaxImg.style.height = '3652px';
+			} else {
+				oGlass.style.width = '120px';
+				oGlass.style.height = '120px';
+				oMaxImg.style.width = '2195px';
+				oMaxImg.style.height = '1826px';
+			}
+		}
+
+		oMinPic.onmouseover = function() {
+			oMaxPic.style.display = "block";
+			oGlass.style.display = 'block';
+
+			oMinPic.onmousemove = function(ev) {
+				var oEvent = ev || event;
+				var l = oEvent.clientX - parentLT(oMinPic).left - oGlass.offsetWidth / 2;
+				var t = oEvent.clientY - parentLT(oMinPic).top - oGlass.offsetHeight / 2;
+
+				if (l < 0) {
+					l = 0;
+				} else if (l > oMinPic.clientWidth - oGlass.offsetWidth) {
+					l = oMinPic.clientWidth - oGlass.offsetWidth;
+				}
+				if (t < 0) {
+					t = 0;
+				} else if (t > oMinPic.clientHeight - oGlass.offsetHeight) {
+					t = oMinPic.clientHeight - oGlass.offsetHeight;
+				}
+
+				oGlass.style.left = l + 'px';
+				oGlass.style.top = t + 'px';
+				if (oSelect.value == 10) {
+					oMaxPic.scrollLeft = l * 10;
+					oMaxPic.scrollTop = t * 10;
+				} else {
+					oMaxPic.scrollLeft = l * 5;
+					oMaxPic.scrollTop = t * 5;
+				}
+			}
+		}
+
+		oMinPic.onmouseout = function() {
+			oMaxPic.style.display = "none";
+			oGlass.style.display = 'none';
+		}
+
+		function parentLT(obj) {
+			var l = 0;
+			var t = 0;
+
+			while (obj) {
+
+				l += obj.offsetLeft;
+				t += obj.offsetTop;
+
+				obj = obj.offsetParent;
+			}
+			return {
+				left: l,
+				top: t
+			};
+		}
+	</script>
+</body>
+</html>

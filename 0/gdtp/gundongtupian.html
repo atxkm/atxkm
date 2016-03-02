@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动图片</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		.wrap{width: 1160px;margin: 50px auto;}
+		input{float: left;height: 200px;font-family: 汉仪娃娃篆简;font-size: 36px;font-weight: bold;}
+		img{float: left;width: 200px;height: 200px;}
+		#outer{float: left;overflow: hidden;width: 1000px;margin: 0 auto;border: 1px solid blue;}
+		#inner{width: 2000px;}
+		img:hover{width: 198px;height: 198px;border: 1px solid red;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function (){
+			var oOuter=document.getElementById("outer");
+			var oInner=document.getElementById("inner");
+			var oLeft=document.getElementById("left");
+			var oRight=document.getElementById("right");
+
+			var timer=null;
+			var direction=true;
+			var move=true;
+			
+			oInner.innerHTML+=oInner.innerHTML;
+
+			function autoscroll(){
+
+				if(move==true){
+
+					if(direction==true){
+
+						oOuter.scrollLeft++;
+						if(oOuter.scrollLeft==oInner.offsetWidth/2){
+
+							oOuter.scrollLeft=0;
+						}
+					}else{
+
+						oOuter.scrollLeft--;
+						if(oOuter.scrollLeft==0){
+
+							oOuter.scrollLeft=oInner.offsetWidth/2;
+						}
+					}
+				}
+
+				if(oOuter.scrollLeft%200==0 && move==true){
+
+					clearInterval(timer);
+					setTimeout(function (){
+
+						clearInterval(timer);
+						timer=setInterval(autoscroll,10);
+					},1000);
+				}
+			}
+			
+			timer=setInterval(autoscroll,10);
+
+			oInner.onmouseover=function (){
+
+				clearInterval(timer);
+				move=false;
+			}
+
+			oInner.onmouseout=function (){
+
+				clearInterval(timer);
+				timer=setInterval(autoscroll,10);
+				move=true;
+			}
+
+			oLeft.onclick=function (){
+
+				direction=true;
+			}
+
+			oRight.onclick=function (){
+
+				direction=false;
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<input type="button" id="left" value="左滚">
+		<div id="outer">
+			<div id="inner">
+				<img src="img/1.jpg" alt="1"/>
+				<img src="img/2.jpg" alt="2"/>
+				<img src="img/3.jpg" alt="3"/>
+				<img src="img/4.jpg" alt="4"/>
+				<img src="img/5.jpg" alt="5"/>
+			</div>
+		</div>
+		<input type="button" id="right" value="右滚">
+	</div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{
+		background-color: #000000;-webkit-transform-style: preserve-3d;
+		-webkit-perspective: 1000;
+	}
+	.cube{
+		position: relative;
+		width: 90px;height: 90px;
+		margin: 100px auto;
+		-webkit-transform-style: preserve-3d;
+		-webkit-animation:roll 5s linear infinite alternate;
+	}
+	.cube img{
+		position: absolute;opacity: 0.9;
+	}
+	.cube img:nth-child(1){-webkit-transform: rotatex(90deg) translateZ(45px);}
+	.cube img:nth-child(2){-webkit-transform: rotatex(0deg) translateZ(45px);}
+	.cube img:nth-child(3){-webkit-transform: rotatey(90deg) translateZ(45px);}
+	.cube img:nth-child(4){-webkit-transform: rotatey(-90deg) translateZ(45px);}
+	.cube img:nth-child(5){-webkit-transform: rotatex(90deg) translateZ(-45px);}
+	.cube img:nth-child(6){-webkit-transform: rotatey(180deg) translateZ(45px);}
+	.cube img:nth-child(7){-webkit-transform: rotatey(180deg) translateZ(45px);}
+	@-webkit-keyframes roll{
+		0% {-webkit-transform: rotatex(-20deg) rotatey(0deg);}
+		50% {-webkit-transform: rotatex(-20deg) rotatey(360deg);}
+		100% {-webkit-transform: rotatex(-380deg) rotatey(360deg);}
+	}
+	.flick_wrap{
+		overflow: hidden;
+		width: 270px;
+		height: 90px;
+		margin: 0 auto;
+	}
+	.flick{
+		width: 540px;
+		-webkit-animation: flick 5s linear infinite alternate;
+	}
+	.flick img{
+		float: left;
+	}
+	@-webkit-keyframes flick{
+		from {-webkit-transform: translateX(0);}
+		to {-webkit-transform: translateX(-270px);}
+	}
+	.fade{
+		position: relative;
+		width: 90px;
+		margin: 100px auto;
+	}
+	.fade img{
+		position: absolute;
+		opacity: 0;
+	}
+	.fade img:nth-child(1){-webkit-animation: fade1 12s linear infinite alternate;}
+	.fade img:nth-child(2){-webkit-animation: fade2 12s linear infinite alternate;}
+	.fade img:nth-child(3){-webkit-animation: fade3 12s linear infinite alternate;}
+	.fade img:nth-child(4){-webkit-animation: fade4 12s linear infinite alternate;}
+	.fade img:nth-child(5){-webkit-animation: fade5 12s linear infinite alternate;}
+	.fade img:nth-child(6){-webkit-animation: fade6 12s linear infinite alternate;}
+	@-webkit-keyframes fade1{
+		0% {opacity: 1;}
+		20% {opacity: 0;}
+		100% {opacity: 0;}
+	}
+	@-webkit-keyframes fade2{
+		0% {opacity: 0;}
+		20% {opacity: 1;}
+		40% {opacity: 0;}
+		100% {opacity: 0;}
+	}
+	@-webkit-keyframes fade3{
+		0%{opacity: 0;}
+		20%{opacity: 0;}
+		40%{opacity: 1;}
+		60%{opacity: 0;}
+		100%{opacity: 0;}
+	}
+	@-webkit-keyframes fade4{
+		0% {opacity: 0;}
+		40% {opacity: 0;}
+		60% {opacity: 1;}
+		80% {opacity: 0;}
+		100% {opacity: 0;}
+	}
+	@-webkit-keyframes fade5{
+		0% {opacity: 0;}
+		60% {opacity: 0;}
+		80% {opacity: 1;}
+		100% {opacity: 0;}
+	}
+	@-webkit-keyframes fade6{
+		0% {opacity: 0;}
+		80% {opacity: 0;}
+		100% {opacity: 1;}
+	}
+	.wrap{
+		-webkit-animation: show 1s linear 1;
+	}
+	@-webkit-keyframes show{
+		from{-webkit-transform: translateY(50px);opacity: 0;}
+		to{-webkit-transform: translateY(0);opacity: 1;}
+	}
+	</style>
+</head>
+<body>
+	<div class='wrap'>
+		<div class='cube'>
+			<img src="dota2.jpg" alt="刀塔2">
+			<img src="kunka.jpg" alt="昆卡">
+			<img src="torrent.jpg" alt="洪流">
+			<img src="tidebringer.jpg" alt="水刀">
+			<img src="mark.jpg" alt="标记">
+			<img src="ghostship.jpg" alt="大招">
+		</div>
+		<div class='flick_wrap'>
+			<div class='flick'>
+				<img src="dota2.jpg" alt="刀塔2">
+				<img src="kunka.jpg" alt="昆卡">
+				<img src="torrent.jpg" alt="洪流">
+				<img src="tidebringer.jpg" alt="水刀">
+				<img src="mark.jpg" alt="标记">
+				<img src="ghostship.jpg" alt="大招">
+			</div>
+		</div>
+		<div class='fade'>
+			<img src="dota2.jpg" alt="刀塔2">
+			<img src="kunka.jpg" alt="昆卡">
+			<img src="torrent.jpg" alt="洪流">
+			<img src="tidebringer.jpg" alt="水刀">
+			<img src="mark.jpg" alt="标记">
+			<img src="ghostship.jpg" alt="大招">
+		</div>
+	</div>
+</body>
+</html>
