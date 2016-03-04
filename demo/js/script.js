@@ -156,7 +156,7 @@ function getResult() {
       });
 
       result.push({
-        "number": this.index,
+        "number": this.index+1,
         "start": nextPoint.position().left + ',' + nextPoint.position().top,
         "end": $(this).position().left + ',' + $(this).position().top
       });
