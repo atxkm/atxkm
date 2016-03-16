@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>border-image-demo</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    height: 100%;
+  }
+  
+  body {
+    background: url(img/bg.jpg) repeat 0 0
+  }
+  
+  .wrap {
+    padding: 75px 42px 75px 72px;
+    border-image-source: url(img/border.jpg);
+    border-image-slice: 75 42 75 72 fill;
+    border-image-width: 75px 42px 75px 72px;
+    border-image-repeat: round;
+  }
+  
+  h1 {
+    font-family: '楷体';
+    font-weight: normal;
+    text-align: center;
+  }
+  
+  .main {
+    margin: 20px;
+    padding: 20px 0;
+    font-family: Microsoft Yahei;
+    border-top: 2px solid rgb(204, 153, 153);
+    border-bottom: 2px solid rgb(204, 153, 153);
+  }
+  
+  .footer {
+    font-family: '楷体';
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>{标题}</h1>
+    <div class="hr"></div>
+    <div class="main">内容</div>
+    <div class="hr"></div>
+    <div class="footer">≡★{版权}★≡</div>
+  </div>
+</body>
+
+</html>
