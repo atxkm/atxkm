@@ -88,69 +88,113 @@ header {
   left: 50%;
   width: 1400px;
   margin-left: -700px;
-  img {
+  img, div {
     position: absolute;
+    opacity: 0;
+    transition: all 1s;
+    z-index: 5;
   }
   .big-bg {
     top: 237px;
     left: -108px;
-    opacity: 0;
     transform: translate(-20px, 0);
-    transition: all 1s;
     &.show {
       opacity: 1;
       transform: translate(0, 0);
     }
   }
   .small-bg {
-    display: none;
     top: -60px;
     left: -215px;
   }
   .feather {
-    display: none;
     top: 150px;
     left: 0;
-  }
-  .flower {
-    display: none;
-    left: 928px;
-    top: 391px;
-  }
-  .branch {
-    display: none;
-    left: 545px;
-    top: 300px;
+    transform: translate(40px, 0);
   }
   .leaf {
-    display: none;
-    left: 596px;
+    left: 683px;
     top: 382px;
+    width: 0;
+    height: 92px;
+    background: url(../img/leaf.png) no-repeat right center;
+    &.show {
+      left: 596px;
+      width: 87px;
+      opacity: 1;
+    }
   }
-  .slogan {
-    display: none;
-    top: 263px;
-    left: 672px;
-  }
-  .surfing {
-    display: none;
-    left: 478px;
-    top: 457px;
+  .branch {
+    left: 744px;
+    top: 456px;
+    width: 0;
+    height: 0;
+    background: url(../img/branch.png) no-repeat right bottom;
+    &.show {
+      left: 545px;
+      top: 300px;
+      width: 199px;
+      height: 156px;
+      opacity: 1;
+    }
   }
   .glide {
-    display: none;
     left: 1183px;
     top: 364px;
+    animation: glideAn 2s linear infinite alternate;
+  }
+  .surfing {
+    left: 478px;
+    top: 457px;
+    animation: surfingAn 2s 1s linear infinite alternate;
+  }
+  .slogan {
+    top: 403px;
+    left: 672px;
+    width: 480px;
+    height: 0;
+    background: url(../img/slogan.png) no-repeat center center;
+    &.show {
+      top: 263px;
+      height: 280px;
+      opacity: 1;
+    }
+  }
+  .flower {
+    left: 928px;
+    top: 391px;
+    transition: none;
+  }
+  .flash {
+    left: 995px;
+    top: 263px;
+    &.animate {
+      animation: flashAn 2s ease-in-out forwards;
+    }
+  }
+  .halo {
+    left: 720px;
+    top: -15px;
+    &.animate {
+      animation: haloAn 2s ease-in-out;
+    }
   }
   .aircraft {
-    display: none;
     top: 177px;
     left: 1123px;
+    &.show {
+      opacity: 1;
+      animation: aircraftAn 3s ease-in-out;
+    }
   }
   .parrot {
-    display: none;
     top: 134px;
     left: 474px;
+    background: url(../img/parrot.png) no-repeat center center;
+    &.show {
+      opacity: 1;
+      animation: parrotAn 1s ease-in-out forwards;
+    }
   }
 }
 
@@ -196,6 +240,7 @@ header {
   position: absolute;
   top: 60px;
   left: 50%;
+  z-index: 10;
   width: 1400px;
   margin-left: -700px;
   .left-btn, .right-btn {
@@ -257,4 +302,84 @@ header {
 
 .pace-inactive {
   display: none;
+}
+
+@keyframes surfingAn {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-4px, -4px);
+  }
+}
+
+@keyframes glideAn {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-4px, 4px);
+  }
+}
+
+@keyframes flashAn {
+  0% {
+    opacity: 0;
+    transform: rotate(0);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(30deg);
+  }
+  90% {
+    opacity: 0.8;
+    transform: rotate(12deg);
+  }
+  100% {
+    opacity: 0.8;
+    transform: rotate(12deg);
+  }
+}
+
+@keyframes haloAn {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes aircraftAn {
+  from {
+    top: 700px;
+    left: -260px;
+    transform: scale(0.5);
+    z-index: 1;
+  }
+  to {
+    top: 177px;
+    left: 1123px;
+    transform: scale(1);
+  }
+}
+
+@keyframes parrotAn {
+  from {
+    top: 214.5px;
+    left: 578.5px;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+  }
+  to {
+    top: 134px;
+    left: 474px;
+    width: 209px;
+    height: 161px;
+    border-radius: 0;
+  }
 }

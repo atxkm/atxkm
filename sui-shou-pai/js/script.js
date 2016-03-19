@@ -10,7 +10,7 @@ var copyDoc = {
   },
   content: {
     text: '#随手拍#大型品牌活动，通过与微博相机与秒拍的合作，激励用户多发微博，提升微博在多媒体领域影响力。品牌方案上以淡雅蓝绿为主色调，并结合随手拍的品牌字和清新元素，呈现出清爽亮丽的效果。随手拍活动鼓励人们发现身边的美好，热爱生活，自信乐观地面对每一天。',
-    speed: 6.2
+    speed: 3.1
   }
 };
 
@@ -26,7 +26,66 @@ $(function() {
 });
 
 window.onload = function() {
+  //大背景跟按钮出现
   $('.big-bg, .right-btn').addClass('show');
+
+  setTimeout(function() {
+    //天空元素出现
+    welkinEvent.run();
+  }, 500);
+};
+
+//鼠标牵扯北京跟羽毛事件
+var mouseEvent = {
+  init: function() {
+    $('.feather, .big-bg').css('transition', 'none');
+
+    $(document).mousemove(function(e) {
+      var x = e.clientX,
+        y = e.clientY;
+
+      var feather_range = 8,
+        bg_range = 1,
+        base_x = $(window).width() / 2,
+        base_y = $(window).height() / 2,
+        featcher_x = (x - base_x) / 200 * feather_range,
+        featcher_y = (y - base_y) / 100 * feather_range,
+        bg_x = (base_x - x) / 200 * bg_range;
+
+      var featherTrans = 'translate(' + featcher_x + 'px' + ', ' + featcher_y + 'px' + ')',
+        bgTrans = 'translate(' + bg_x + 'px' + ', 0)';
+
+      $('.feather').css('transform', featherTrans);
+      $('.big-bg').css('transform', bgTrans);
+    });
+  }
+};
+
+//天空元素出现
+var welkinEvent = {
+  run: function() {
+    this.showByOpacity('.small-bg');
+    this.showByOpacity('.feather');
+
+    var _this = this;
+    setTimeout(function() {
+      $('.leaf').addClass('show');
+    }, 300);
+
+    setTimeout(function() {
+      $('.branch').addClass('show');
+      _this.showByOpacity('.glide');
+      _this.showByOpacity('.surfing');
+    }, 500);
+
+    setTimeout(function() {
+      $('.glide').addClass('animate')
+      mouseEvent.init();
+    }, 800);
+  },
+  showByOpacity: function(selector) {
+    $(selector).css('opacity', 1);
+  }
 };
 
 //事件控制
@@ -49,18 +108,16 @@ var eventControl = {
       return;
     }
 
-    this.chooseEvent(this.step_index);
+    this.setEnvironment(this.step_index);
     $('.right-btn').addClass('show');
   },
   chooseEvent: function(index) {
-    this.setEnvironment(index);
     switch (index) {
-      case 0:
-        $('.left-btn').removeClass('show');
-        break;
       case 1:
+        sloganEvent.run();
         break;
       case 2:
+        flyEvent.run();
         break;
       case 3:
         $('.right-btn').removeClass('show');
@@ -69,11 +126,50 @@ var eventControl = {
   },
   setEnvironment: function(index) {
     switch (index) {
+      case 0:
+        $('.left-btn').removeClass('show');
+        sloganEvent.stop();
+        break;
       case 1:
+        flyEvent.stop();
         break;
       case 2:
         wordEvent.stop();
     }
+  }
+};
+
+//大标题的事件
+var sloganEvent = {
+  run: function() {
+    $('.slogan').addClass('show');
+
+    setTimeout(function() {
+      $('.flower').css('opacity', 1);
+    }, 800);
+
+    var _this = this;
+    setTimeout(function() {
+      _this.animate();
+    }, 800);
+  },
+  animate: function() {
+    $('.flash, .halo').addClass('animate');
+  },
+  stop: function() {
+    $('.slogan').removeClass('show');
+    $('.flower').css('opacity', 0);
+    $('.flash, .halo').removeClass('animate');
+  }
+};
+
+//鹦鹉飞机事件
+var flyEvent = {
+  run: function() {
+    $('.aircraft, .parrot').addClass('show');
+  },
+  stop: function() {
+    $('.aircraft, .parrot').removeClass('show');
   }
 };
 

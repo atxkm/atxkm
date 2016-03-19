@@ -71,57 +71,92 @@ header {
   left: 50%;
   width: 1400px;
   margin-left: -700px; }
-  .main img {
-    position: absolute; }
+  .main img, .main div {
+    position: absolute;
+    opacity: 0;
+    transition: all 1s;
+    z-index: 5; }
   .main .big-bg {
     top: 237px;
     left: -108px;
-    opacity: 0;
-    transform: translate(-20px, 0);
-    transition: all 1s; }
+    transform: translate(-20px, 0); }
     .main .big-bg.show {
       opacity: 1;
       transform: translate(0, 0); }
   .main .small-bg {
-    display: none;
     top: -60px;
     left: -215px; }
   .main .feather {
-    display: none;
     top: 150px;
-    left: 0; }
-  .main .flower {
-    display: none;
-    left: 928px;
-    top: 391px; }
-  .main .branch {
-    display: none;
-    left: 545px;
-    top: 300px; }
+    left: 0;
+    transform: translate(40px, 0); }
   .main .leaf {
-    display: none;
-    left: 596px;
-    top: 382px; }
-  .main .slogan {
-    display: none;
-    top: 263px;
-    left: 672px; }
-  .main .surfing {
-    display: none;
-    left: 478px;
-    top: 457px; }
+    left: 683px;
+    top: 382px;
+    width: 0;
+    height: 92px;
+    background: url(../img/leaf.png) no-repeat right center; }
+    .main .leaf.show {
+      left: 596px;
+      width: 87px;
+      opacity: 1; }
+  .main .branch {
+    left: 744px;
+    top: 456px;
+    width: 0;
+    height: 0;
+    background: url(../img/branch.png) no-repeat right bottom; }
+    .main .branch.show {
+      left: 545px;
+      top: 300px;
+      width: 199px;
+      height: 156px;
+      opacity: 1; }
   .main .glide {
-    display: none;
     left: 1183px;
-    top: 364px; }
+    top: 364px;
+    animation: glideAn 2s linear infinite alternate; }
+  .main .surfing {
+    left: 478px;
+    top: 457px;
+    animation: surfingAn 2s 1s linear infinite alternate; }
+  .main .slogan {
+    top: 403px;
+    left: 672px;
+    width: 480px;
+    height: 0;
+    background: url(../img/slogan.png) no-repeat center center; }
+    .main .slogan.show {
+      top: 263px;
+      height: 280px;
+      opacity: 1; }
+  .main .flower {
+    left: 928px;
+    top: 391px;
+    transition: none; }
+  .main .flash {
+    left: 995px;
+    top: 263px; }
+    .main .flash.animate {
+      animation: flashAn 2s ease-in-out forwards; }
+  .main .halo {
+    left: 720px;
+    top: -15px; }
+    .main .halo.animate {
+      animation: haloAn 2s ease-in-out; }
   .main .aircraft {
-    display: none;
     top: 177px;
     left: 1123px; }
+    .main .aircraft.show {
+      opacity: 1;
+      animation: aircraftAn 3s ease-in-out; }
   .main .parrot {
-    display: none;
     top: 134px;
-    left: 474px; }
+    left: 474px;
+    background: url(../img/parrot.png) no-repeat center center; }
+    .main .parrot.show {
+      opacity: 1;
+      animation: parrotAn 1s ease-in-out forwards; }
 
 .text-wrap {
   position: relative;
@@ -159,6 +194,7 @@ header {
   position: absolute;
   top: 60px;
   left: 50%;
+  z-index: 10;
   width: 1400px;
   margin-left: -700px; }
   .btn-wrap .left-btn, .btn-wrap .right-btn {
@@ -202,5 +238,59 @@ header {
 
 .pace-inactive {
   display: none; }
+
+@keyframes surfingAn {
+  from {
+    transform: translate(0, 0); }
+  to {
+    transform: translate(-4px, -4px); } }
+@keyframes glideAn {
+  from {
+    transform: translate(0, 0); }
+  to {
+    transform: translate(-4px, 4px); } }
+@keyframes flashAn {
+  0% {
+    opacity: 0;
+    transform: rotate(0); }
+  50% {
+    opacity: 1;
+    transform: rotate(30deg); }
+  90% {
+    opacity: 0.8;
+    transform: rotate(12deg); }
+  100% {
+    opacity: 0.8;
+    transform: rotate(12deg); } }
+@keyframes haloAn {
+  0% {
+    opacity: 0; }
+  60% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@keyframes aircraftAn {
+  from {
+    top: 700px;
+    left: -260px;
+    transform: scale(0.5);
+    z-index: 1; }
+  to {
+    top: 177px;
+    left: 1123px;
+    transform: scale(1); } }
+@keyframes parrotAn {
+  from {
+    top: 214.5px;
+    left: 578.5px;
+    width: 0;
+    height: 0;
+    border-radius: 50%; }
+  to {
+    top: 134px;
+    left: 474px;
+    width: 209px;
+    height: 161px;
+    border-radius: 0; } }
 
 /*# sourceMappingURL=style.css.map */
