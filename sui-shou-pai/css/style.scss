@@ -1,0 +1,260 @@
+﻿html {
+  width: 100%;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  min-width: 1440px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #aae7d2;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  position: relative;
+  z-index: 10;
+  height: 60px;
+  background: #19221f;
+  .inner {
+    width: 1400px;
+    margin: 0 auto;
+    line-height: 60px;
+    color: #ffffff;
+    .title {
+      float: left;
+      width: 200px;
+      height: 60px;
+      font-size: 24px;
+      img, span {
+        vertical-align: middle;
+      }
+    }
+    .tip {
+      display: inline-block;
+      font-size: 16px;
+      height: 24px;
+      margin-left: 12px;
+      padding-left: 9px;
+      border-left: 1px solid #303936;
+      line-height: 24px;
+      vertical-align: middle;
+    }
+    .btns {
+      float: right;
+      line-height: 60px;
+      a {
+        position: relative;
+        vertical-align: middle;
+        img {
+          vertical-align: middle;
+        }
+        .ewm {
+          position: absolute;
+          // top: -47px;
+          top: 40px;
+          left: -48px;
+          opacity: 0;
+          transform: scale(0.2);
+          transform-origin: center -48px;
+          // transform: scale(0), translateY(-5px);
+          transition: all .3s;
+        }
+        &:hover .ewm {
+          opacity: 1;
+          transform: scale(1);
+          // transform: scale(1), translateY(0);
+        }
+      }
+      span {
+        display: inline-block;
+        height: 24px;
+        margin: 0 17px;
+        border-right: 1px solid #303936;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.main {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  width: 1400px;
+  margin-left: -700px;
+  img {
+    position: absolute;
+  }
+  .big-bg {
+    top: 237px;
+    left: -108px;
+    opacity: 0;
+    transform: translate(-20px, 0);
+    transition: all 1s;
+    &.show {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+  .small-bg {
+    display: none;
+    top: -60px;
+    left: -215px;
+  }
+  .feather {
+    display: none;
+    top: 150px;
+    left: 0;
+  }
+  .flower {
+    display: none;
+    left: 928px;
+    top: 391px;
+  }
+  .branch {
+    display: none;
+    left: 545px;
+    top: 300px;
+  }
+  .leaf {
+    display: none;
+    left: 596px;
+    top: 382px;
+  }
+  .slogan {
+    display: none;
+    top: 263px;
+    left: 672px;
+  }
+  .surfing {
+    display: none;
+    left: 478px;
+    top: 457px;
+  }
+  .glide {
+    display: none;
+    left: 1183px;
+    top: 364px;
+  }
+  .aircraft {
+    display: none;
+    top: 177px;
+    left: 1123px;
+  }
+  .parrot {
+    display: none;
+    top: 134px;
+    left: 474px;
+  }
+}
+
+.text-wrap {
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
+  width: 1440px;
+  margin: 0 auto;
+  padding: 303px 0 0 110px;
+  color: #008e8c;
+  div {
+    opacity: 0;
+    transition: all 2s;
+    &.show {
+      opacity: 1;
+    }
+  }
+  .title {
+    float: left;
+    height: 56px;
+    line-height: 1em;
+    font-size: 56px;
+    cursor: pointer;
+  }
+  .tip {
+    clear: both;
+    height: 24px;
+    margin-top: 5px;
+    font-size: 24px;
+    line-height: 1em;
+  }
+  .content {
+    width: 309px;
+    height: 170px;
+    margin-top: 50px;
+    font-size: 16px;
+    line-height: 25px;
+  }
+}
+
+.btn-wrap {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  width: 1400px;
+  margin-left: -700px;
+  .left-btn, .right-btn {
+    position: fixed;
+    top: 487px;
+    transform: matrix(0.1, 0, 0, 0.1, 0, 0);
+    transition: all .3s;
+    &:hover {
+      box-shadow: 0 0 5px 2px #ffffff;
+    }
+    &.show {
+      transform: matrix(1, 0, 0, 1, 0, 0);
+    }
+  }
+  .left-btn {
+    left: 0;
+    &:active {
+      transform: matrix(1, 0, 0, 1, -5, 5);
+    }
+  }
+  .right-btn {
+    right: 0;
+    &:active {
+      transform: matrix(1, 0, 0, 1, 5, 5);
+    }
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  .btn-wrap {
+    .left-btn, .right-btn {
+      position: absolute;
+      top: 427px;
+    }
+    .left-btn {
+      left: -140px;
+    }
+    .right-btn {
+      right: -140px;
+    }
+  }
+}
+
+//加载进度条
+.pace {
+  pointer-events: none;
+  user-select: none;
+  .pace-progress {
+    position: fixed;
+    top: 0;
+    right: 100%;
+    z-index: 2000;
+    width: 100%;
+    height: 2px;
+    background: #ff0000;
+    box-shadow: 0 0 2px #ffffff;
+  }
+}
+
+.pace-inactive {
+  display: none;
+}
