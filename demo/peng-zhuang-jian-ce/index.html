@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>反弹</title>
+  <style>
+  div {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    border: 10px solid gray;
+    background: black;
+  }
+  
+  div span {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    line-height: 50px;
+    text-align: center;
+  }
+  
+  p {
+    width: 800px;
+    height: 25px;
+    margin: 10px auto;
+    border: 2px solid black;
+  }
+  
+  p span {
+    display: inline-block;
+    width: 220px;
+    border-right: 1px solid black;
+  }
+  </style>
+  <script>
+  window.onload = function() {
+
+    var oWall = document.getElementById('wall');
+    var aBall = oWall.getElementsByTagName('span');
+    var aP = document.getElementsByTagName('p');
+    var aSpan = aP[0].getElementsByTagName('span');
+    var oAdd = document.getElementById('add');
+
+    function initial(n) {
+
+      var x = 0;
+      var y = 0;
+
+      var vesselWidth = 750;
+      var vesselHeight = 450;
+
+      do {
+        var canOrNot = 0;
+        x = parseInt(Math.random() * vesselWidth);
+        y = parseInt(Math.random() * vesselHeight);
+
+        var i = 0;
+        while (i < n) {
+
+          var strL = aBall[i].style.left;
+          var strT = aBall[i].style.top;
+          var l = parseInt(strL.substring(0, strL.length - 2));
+          var t = parseInt(strT.substring(0, strT.length - 2));
+
+          if (Math.sqrt((x - l) * (x - l) + (y - t) * (y - t)) <= 60) {
+
+            canOrNot++;
+            break;
+          }
+
+          i++;
+        }
+      } while (canOrNot > 0)
+
+      aBall[n].style.left = x + "px";
+      aBall[n].style.top = y + "px";
+      aBall[n].direL = true;
+      aBall[n].direT = true;
+      aBall[n].innerHTML = n;
+    }
+
+    function moveOn(dire, n) {
+
+      if (dire) {
+
+        n++;
+      } else {
+
+        n--;
+      }
+
+      return n;
+    }
+
+    function judgeLeft(i, n) {
+
+      if (n == 0) {
+
+        aBall[i].direL = true;
+        aBall[i].style.backgroundColor = '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
+        oWall.style.borderLeft = "10px solid red";
+        setTimeout(function() {
+
+          oWall.style.borderLeft = "10px solid gray";
+        }, 100);
+      }
+
+      if (n == 750) {
+
+        aBall[i].direL = false;
+        aBall[i].style.backgroundColor = '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
+        oWall.style.borderRight = "10px solid red";
+        setTimeout(function() {
+
+          oWall.style.borderRight = "10px solid gray";
+        }, 100);
+      }
+    }
+
+    function judgeTop(i, n) {
+
+      if (n == 0) {
+
+        aBall[i].direT = true;
+        aBall[i].style.backgroundColor = '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
+        oWall.style.borderTop = "10px solid red";
+        setTimeout(function() {
+
+          oWall.style.borderTop = "10px solid gray";
+        }, 100);
+      }
+
+      if (n == 450) {
+
+        aBall[i].direT = false;
+        aBall[i].style.backgroundColor = '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
+        oWall.style.borderBottom = "10px solid red";
+        setTimeout(function() {
+
+          oWall.style.borderBottom = "10px solid gray";
+        }, 100);
+      }
+    }
+
+    function judgeHit(i, l, t) {
+
+      for (var j = 0; j < aBall.length; j++) {
+
+        var strOne = aBall[i].style.backgroundColor;
+        var strTwo = aBall[j].style.backgroundColor;
+
+        if (i != j) {
+
+          var x = parseInt(aBall[j].style.left.substring(0, aBall[j].style.left.length - 2));
+          var y = parseInt(aBall[j].style.top.substring(0, aBall[j].style.top.length - 2));
+
+          if (Math.sqrt((l - x) * (l - x) + (t - y) * (t - y)) <= 50) {
+
+            aBall[i].direL = !aBall[i].direL;
+            aBall[i].direT = !aBall[i].direT;
+
+            break;
+          }
+        }
+      }
+
+      judgeLeft(i, l);
+      judgeTop(i, t);
+    }
+
+    function coord() {
+
+      aSpan[0].innerHTML = "总共有:" + aBall.length + "个球。";
+      for (var i = 0; i < aBall.length; i++) {
+
+        var l = parseInt(aBall[i].style.left.substring(0, aBall[i].style.left.length - 2));
+        var t = parseInt(aBall[i].style.top.substring(0, aBall[i].style.top.length - 2));
+        if (l < 0 || l > 750 || t > 450 || t < 0) {
+
+          clearInterval(timer);
+          aSpan[1].innerHTML = i + ":" + aBall[i].style.left + "," + aBall[i].style.top;
+        }
+      }
+    }
+
+    function move() {
+
+      for (var i = 0; i < aBall.length; i++) {
+
+        var l = parseInt(aBall[i].style.left.substring(0, aBall[i].style.left.length - 2));
+        var t = parseInt(aBall[i].style.top.substring(0, aBall[i].style.top.length - 2));
+
+        judgeHit(i, l, t);
+
+        var dire = aBall[i].direL;
+        l = moveOn(dire, l);
+
+        dire = aBall[i].direT;
+        t = moveOn(dire, t);
+
+        aBall[i].style.left = l + "px";
+        aBall[i].style.top = t + "px";
+      }
+      coord();
+    }
+
+    initial(aBall.length - 1);
+    timer = setInterval(move, 1);
+
+    oAdd.onclick = function() {
+
+      var num = aBall.length;
+
+      var direL = new Array();
+      var direT = new Array();
+
+      for (var i = 0; i < aBall.length; i++) {
+
+        direL[i] = aBall[i].direL;
+        direT[i] = aBall[i].direT;
+      }
+
+      oWall.innerHTML = oWall.innerHTML + "<span></span>";
+
+      initial(aBall.length - 1);
+
+      for (var i = 0; i < num; i++) {
+
+        aBall[i].direL = direL[i];
+        aBall[i].direT = direT[i];
+      }
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <div id="wall">
+    <span></span>
+  </div>
+  <p>
+    <span></span>
+    <input type="button" value="增加1个球" id="add">
+    <span></span>
+  </p>
+</body>
+
+</html>

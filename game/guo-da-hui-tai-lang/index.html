@@ -1,0 +1,232 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>锅打灰太狼</title>
+  <meta name="viewport" content="width=320,user-scalable=no">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="tween.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div id="startPage">
+      <span id="gameName">锅打灰太狼</span>
+      <input type="button" value='开始游戏' id="startBtn">
+    </div>
+    <div id="gamePage">
+      <span id="score">0</span>
+      <span id="time"></span>
+      <div id="wolfDen"></div>
+    </div>
+    <div id="endPage">
+      <span id="goal">得分</span>
+      <span id="finalScore">0</span>
+      <input type="button" value='返回' id="backBtn">
+    </div>
+  </div>
+  <script>
+  var oStartPage = document.getElementById('startPage');
+  var oNameName = document.getElementById('gameName');
+  var oStartBtn = document.getElementById('startBtn');
+  var oGamePage = document.getElementById('gamePage');
+  var oScore = document.getElementById('score');
+  var oTime = document.getElementById('time');
+  var oWolfDen = document.getElementById('wolfDen');
+  var oEndPage = document.getElementById('endPage');
+  var oFinalScore = document.getElementById('finalScore');
+  var oBack = document.getElementById('backBtn');
+
+  var score = 0;
+  var gameTimer = null;
+
+  oStartBtn.addEventListener("click", function() {
+    // 缩进主页 && 展开游戏
+    score = 0;
+    click = false;
+    oScore.innerHTML = 0;
+
+    var ind = 0;
+    oStartBtn.timer = setInterval(function() {
+      ind++;
+      if (ind == 50) {
+        clearInterval(oStartBtn.timer);
+        oScore.style.display = "inline";
+
+        var tempInd = 0;
+        oStartBtn.tempTimer = setInterval(function() {
+          tempInd++;
+          if (tempInd == 50) {
+            clearInterval(oStartBtn.tempTimer);
+          }
+          oTime.style.width = Tween.Linear(tempInd, 0, 180, 50) + "px";
+        }, 6);
+        startGame();
+      }
+      oStartPage.style.height = Tween.Bounce.easeOut(ind, 480, -480, 50) + "px";
+      oGamePage.style.height = Tween.Bounce.easeOut(ind, 0, 480, 50) + "px";
+    }, 33);
+  });
+
+  function startGame() {
+    // 运行游戏
+    gameTimer = setInterval(creatWolf, 500);
+    setTimeout(runTime, 1000);
+  }
+
+  function creatWolf() {
+    // 狼出现的坐标
+    var aCoor = [{
+      l: "95px",
+      t: "115px"
+    }, {
+      l: "15px",
+      t: "160px"
+    }, {
+      l: "15px",
+      t: "221px"
+    }, {
+      l: "27px",
+      t: "294px"
+    }, {
+      l: "102px",
+      t: "192px"
+    }, {
+      l: "118px",
+      t: "274px"
+    }, {
+      l: "187px",
+      t: "142px"
+    }, {
+      l: "197px",
+      t: "212px"
+    }, {
+      l: "205px",
+      t: "296px"
+    }];
+
+    var wolfRandom = parseInt(Math.random() * 100);
+    if (wolfRandom >= 0 && wolfRandom <= 19) {
+      var wolfKind = "x";
+    } else {
+      var wolfKind = "h";
+    }
+
+    var wolfHere = true;
+    while (wolfHere) {
+      var tempSign = false;
+      var coorNum = parseInt(Math.random() * aCoor.length);
+      if (wolfDen.children.length != 0) {
+        var aWolfCoor = [];
+        for (var i = 0; i < wolfDen.children.length; i++) {
+          aWolfCoor.push(wolfDen.children[i].offsetTop);
+        }
+
+        for (var i = 0; i < aWolfCoor.length; i++) {
+          if (aWolfCoor[i] == parseInt(aCoor[coorNum].t)) {
+            tempSign = true;
+            break;
+          } else {
+            tempSign = false;
+          }
+        }
+
+        wolfHere = tempSign;
+      } else {
+        wolfHere = false;
+      }
+    }
+
+    var oWolf = document.createElement('div');
+    oWolf.style.left = aCoor[coorNum].l;
+    oWolf.style.top = aCoor[coorNum].t;
+    var oWolfImg = document.createElement('img');
+    oWolfImg.src = 'img/' + wolfKind + ".png";
+    oWolf.appendChild(oWolfImg);
+    oWolfDen.appendChild(oWolf);
+
+    var ind = 0;
+    oWolf.appearTimer = setInterval(function() {
+      ind++;
+      if (ind == 5) {
+        clearInterval(oWolf.appearTimer);
+        oWolf.disappearTimer = setInterval(function() {
+          ind--;
+          if (ind == 0) {
+            clearInterval(oWolf.disappearTimer);
+            oWolfDen.removeChild(oWolf);
+          }
+          oWolf.scrollLeft = ind * 108;
+        }, 126);
+      }
+      oWolf.scrollLeft = ind * 108;
+    }, 126);
+
+    oWolf.addEventListener('click', function() {
+      clearInterval(oWolf.appearTimer);
+      clearInterval(oWolf.disappearTimer);
+      var tempInd = 6;
+      oWolf.hitTimer = setInterval(function() {
+        tempInd++;
+        if (tempInd == 9) {
+          clearInterval(oWolf.hitTimer);
+          oWolfDen.removeChild(oWolf);
+          judgeScore(wolfKind);
+        }
+        oWolf.scrollLeft = tempInd * 108;
+      }, 168);
+    });
+  }
+
+  function runTime() {
+    // 时间走动
+    var ind = 0;
+    var timer = setInterval(function() {
+      ind++;
+      if (ind == 180) {
+        clearInterval(timer);
+        clearInterval(gameTimer);
+        setTimeout(endGame, 1000);
+      }
+      oTime.style.width = Tween.Linear(ind, 180, -180, 180) + "px";
+    }, 168);
+  }
+
+  function judgeScore(wolfKind) {
+    if (wolfKind == "h") {
+      score++;
+    } else {
+      score--;
+    }
+    oScore.innerHTML = score * 10;
+  }
+
+  function endGame() {
+
+    oFinalScore.innerHTML = oScore.innerHTML;
+    var ind = 0;
+    var timer = setInterval(function() {
+      ind++;
+      if (ind == 50) {
+        clearInterval(timer);
+      }
+      oGamePage.style.height = Tween.Bounce.easeOut(ind, 480, -480, 50) + "px";
+      oEndPage.style.height = Tween.Bounce.easeOut(ind, 0, 480, 50) + "px";
+    }, 33);
+    oBack.onclick = function() {
+      var tempInd = 0;
+      var tempTimer = setInterval(function() {
+        tempInd++;
+        if (tempInd == 50) {
+          clearInterval(tempTimer);
+        }
+        oStartPage.style.height = Tween.Bounce.easeOut(tempInd, 0, 480, 50) + "px";
+        oEndPage.style.height = Tween.Bounce.easeOut(tempInd, 480, -480, 50) + "px";
+      }, 33);
+    }
+  }
+  </script>
+</body>
+
+</html>

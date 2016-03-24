@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>滚轮放大</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #wrap {
+    overflow: hidden;
+    width: 600px;
+    margin: 0 auto;
+  }
+  
+  #wrap div {
+    float: left;
+    margin-top: 200px;
+  }
+  
+  #wrap .middle {
+    margin: 0 50px;
+  }
+  
+  #wrap img {
+    width: 200px;
+  }
+  
+  #wrap .middle img {
+    width: 100px;
+  }
+  
+  #mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+  }
+  
+  #big {
+    position: absolute;
+    display: none;
+  }
+  
+  #big div {
+    overflow: hidden;
+    background-color: #ccc;
+  }
+  
+  #big span {
+    float: right;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  #btn {
+    position: absolute;
+    top: -20px;
+    height: 20px;
+  }
+  
+  p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 50px;
+  }
+  </style>
+  <script src='jQuery1.9.1.js'></script>
+</head>
+
+<body>
+  <h2>点击滚轮放大</h2>
+  <div id="wrap">
+    <div>
+      <img src="1.jpg" alt="图片一" title='图片一'>
+    </div>
+    <div class='middle'>
+      <img src="2.jpg" alt="图片二" title='图片二'>
+    </div>
+    <div>
+      <img src="3.jpg" alt="图片三" title='图片三'>
+    </div>
+  </div>
+  <div id='mask'></div>
+  <div id="big">
+    <div id='btn'>
+      <span>关闭</span>
+      <span>打开</span>
+      <span>还原</span>
+    </div>
+  </div>
+  <script>
+  $.fn.extend({
+    mousewheel: function(fnWheel) {
+      if ($(this).get(0).addEventListener) {
+        $(this).get(0).addEventListener("DOMMouseScroll", fn, false);
+        $(this).get(0).addEventListener("mousewheel", fn, false);
+      }
+      if ($(this).get(0).attachEvent) {
+        $(this).get(0).attachEvent("onmousewheel", fn);
+      };
+
+      function fn(ev) {
+        var oEvent = ev || event;
+        var _this = this;
+
+        var down = true;
+        if (oEvent.wheelDelta) {
+          down = oEvent.wheelDelta < 0;
+        } else {
+          down = oEvent.detail > 0;
+        };
+        fnWheel.call(_this, down, oEvent);
+        if (oEvent.preventDefault) {
+          oEvent.preventDefault();
+        };
+        return false;
+      };
+    }
+  });
+
+  $('img').click(function(event) {
+    $('#mask').css('display', 'block');
+    $('#mask').css('height', '6000px');
+    $('#big').css('display', 'block');
+    $(this).parent().clone().appendTo($('#big'));
+
+    var wid = $('#big img').width();
+
+    $('#big').css({
+      left: ($(document).innerWidth() - $('#big').width()) / 2,
+      top: $(document).scrollTop() + 100
+    });
+
+    $('#big img').mousewheel(function(down, e) {
+
+      if (down) {
+        changeWidth(-10);
+      } else {
+        changeWidth(10);
+      };
+
+      function changeWidth(operation) {
+        var lScale = (e.clientX - $('#big').offset().left) / $('#big').width();
+        var tScale = (e.clientY + $(document).scrollTop() - $('#big').offset().top) / $('#big').height();
+
+        var w = $('#big img').width() + operation;
+        if (w <= 130) {
+          w = 130;
+        }
+        $('#big img').css('width', w);
+
+        $('#big').css('left', e.clientX - lScale * $('#big').width());
+        $('#big').css('top', e.clientY - tScale * $('#big').height() + $(document).scrollTop());
+      }
+    });
+
+    $('#big span').eq(0).click(function(event) {
+      $('#big div').eq(1).remove();
+      $('#big').css('display', 'none');
+      $('#mask').css('display', 'none');
+    });
+
+    $('#big span').eq(1).click(function(event) {
+      window.open($('#big img').attr('src'), "_blank");
+    });
+
+    $('#big span').eq(2).click(function(event) {
+      $('#big img').css('width', wid);
+      $('#big').css({
+        left: ($(document).innerWidth() - $('#big').width()) / 2,
+        top: $(document).scrollTop() + 100
+      });
+    });
+
+    $('#big').mousedown(function(e) {
+      var l = e.clientX - $('#big').offset().left;
+      var t = e.clientY - $('#big').offset().top + $(document).scrollTop();
+
+      $(document).mousemove(function(e) {
+        $('#big').css('left', e.clientX - l);
+        $('#big').css('top', e.clientY - t + $(document).scrollTop());
+      });
+
+      $('#big').mouseup(function(event) {
+        $(document).unbind('mousemove');
+      });
+      e.preventDefault();
+    });
+  });
+  </script>
+</body>
+
+</html>

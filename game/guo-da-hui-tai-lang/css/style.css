@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #F60;
+  font-family: Microsoft Yahei;
+  text-shadow: 0 0 5px #FFFF00;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  background: #000000;
+}
+
+.wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  width: 320px;
+  height: 480px;
+  margin-top: -240px;
+  margin-left: -160px;
+}
+
+#startPage {
+  height: 480px;
+  overflow: hidden;
+  background: url(../img/myrank_bg.jpg) 0 0 no-repeat;
+  background-size: 100% 100%;
+}
+
+#gameName {
+  display: block;
+  width: 320px;
+  height: 50px;
+  margin-top: 168px;
+  background: none;
+  background-size: 100% 100%;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#startBtn {
+  width: 320px;
+  height: 50px;
+  margin-top: 60px;
+  border: none;
+  background: none;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#gamePage {
+  position: relative;
+  bottom: 0;
+  height: 0;
+  overflow: hidden;
+  background: url(../img/game_bg.jpg) 0 0 no-repeat;
+  background-size: 100% 100%;
+}
+
+#time {
+  position: absolute;
+  top: 66px;
+  left: 63px;
+  float: left;
+  width: 0;
+  height: 16px;
+  background: url(../img/progress.png) 0 0 no-repeat;
+}
+
+#score {
+  display: none;
+  float: left;
+  margin: 14px 0 0 60px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#wolfDen div {
+  position: absolute;
+  overflow: hidden;
+  width: 108px;
+}
+
+#endPage {
+  position: relative;
+  bottom: 0;
+  height: 0;
+  overflow: hidden;
+  background: url(../img/mb.png) 0 0 no-repeat;
+  background-size: 100% 100%;
+}
+
+#goal {
+  display: block;
+  width: 320px;
+  height: 50px;
+  margin-top: 168px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#finalScore {
+  display: block;
+  width: 320px;
+  height: 50px;
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#backBtn {
+  width: 100px;
+  height: 50px;
+  margin-top: 100px;
+  margin-left: 200px;
+  border: none;
+  background: none;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
