@@ -410,3 +410,29 @@ Small Device Styles
     vertical-align: middle;
   }
 }
+
+.warn_tips {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  height: 40px;
+  background: #fff691;
+  font-family: 'Arial';
+  color: #010101;
+  text-align: center;
+  line-height: 40px;
+}
+
+.warn_tips a {
+  color: #676767;
+  padding: 0 2px;
+  zoom: 1;
+}
+
+.warn_tips a:hover {
+  text-decoration: underline;
+}
+
+.height {
+  height: 40px;
+}
